@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -16,6 +17,9 @@ database = SQLAlchemy(app)
 # initialize the database as we create the app
 database.init_app(app)
 
-from .views.doctors import doctors
-from .views.patients import patients
-from .views.appointments import appointments
+
+from api.views.doctors import doctors
+from api.views.patients import patients
+from api.views.appointments import appointments
+from api.views.slots import slots
+

@@ -1,7 +1,5 @@
 from api import database as db
 
-from models.appointment import Appointment
-
 
 class Patient(db.Model):
     """This is the patients model"""
@@ -16,11 +14,26 @@ class Patient(db.Model):
 
     def __init__(self, first_name, last_name):
         """
-        :param first_name: patients's first name
-        :param last_name: patients's second_name
+        :param first_name: patient's first name
+        :param last_name: patient's second_name
         """
         self.first_name = first_name
         self.last_name = last_name
+
+    def save(self):
+        """Saves a patient record into the database"""
+        db.session.add(self)
+        db.session.commit()
+
+    @staticmethod
+    def get_all():
+        """Fetches all the patients from the database"""
+        return Patient.query.all()
+
+    def delete(self):
+        """Deletes an patient with a particular id """
+        db.session.delete(self)
+        db.session.commit()
 
     def __repr__(self):
         return 'Patient {}'.format(self.first_name, self.last_name)
