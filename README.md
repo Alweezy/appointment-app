@@ -37,7 +37,7 @@ $ workon virtualenv-name
 
 Install libraries and dependencies `$ pip install -r requirements.txt`.
 
-Create testing and development databases: `$ createdb appointment_dev`, `$ createdb appointment_dev`:
+Create testing and development databases: `$ createdb appointment_dev`, `$ createdb appointment_testing`:
 
 Handle migrations by running the following commands one after the other:
 
@@ -69,3 +69,8 @@ $  python manage.py db upgrade
 | GET /api/v1/slots/slot_id| Returns a slot|
 | DELETE /api/v1/slots/slot_id | Deletes slot |
 
+
+# Running tests
+Make sure you are connected to the testing database, `appointment_testing` and run `$ nosetests -v`
+
+The live hosted application can be found [here](https://daktari-sessions.herokuapp.com/api/v1/).
